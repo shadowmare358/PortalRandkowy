@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
+using portalrandkowy.API.Data;
 
 namespace portalrandkowy.API
 {
@@ -25,6 +27,7 @@ namespace portalrandkowy.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<DataContext>(x => x.UseSqlite("ConnectionString"));
             services.AddControllers();
             services.AddMvc(options => {
                 options.EnableEndpointRouting = false;
