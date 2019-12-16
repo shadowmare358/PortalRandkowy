@@ -37,6 +37,7 @@ namespace portalrandkowy.API
                     builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().Build();
                 });
             });
+            services.AddScoped<IAuthRepository, AuthRepository>();
 
         }
 
