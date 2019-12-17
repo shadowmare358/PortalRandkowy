@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using portalrandkowy.API.Data;
+using portalrandkowy.API.Dtos;
 using portalrandkowy.API.Models;
 
 namespace portalrandkowy.API.Controllers
@@ -15,15 +16,17 @@ namespace portalrandkowy.API.Controllers
             _repository = repository;
         }
         [HttpPost("register")]
-        public async Task<IActionResult> Register(string username, string password){
-            username = username.ToLower();
-            if(await _repository.UserExists(username))
+        public async Task<IActionResult> Register(UserForRegisterDto userForRegisterDto){
+
+            userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
+            if(await _repository.UserExists(userForRegisterDto.Username))
                 return BadRequest("User with this name already exists!");
             var userToCreate = new User{
-                Username = username
+                Username = userForRegisterDto.Username
             };
-            var createdUser = await _repository.Register(userToCreate, password);
+            var createdUser = await _repository.Register(userToCreate, userForRegisterDto.Password);
             return StatusCode(201);
+
         }
     }
 }
