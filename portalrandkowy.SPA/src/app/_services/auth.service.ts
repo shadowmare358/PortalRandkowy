@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -7,10 +7,15 @@ import { map } from 'rxjs/operators';
 })
 export class AuthService {
 
-baseUrl = 'http://localhost:5000/api/auth/';
+baseUrl = 'https://localhost:5001/api/auth/';
 
 constructor(private http: HttpClient) { }
 login(model: any){
+  // const headers = new HttpHeaders()
+  //     .append('Content-Type', 'application/json')
+  //      .append('Access-Control-Allow-Methods', 'POST')
+  //      .append('Access-Control-Allow-Methods', 'GET')
+  //     .append('Access-Control-Allow-Origin', 'https://localhost:5001/api/auth/');
   return this.http.post(this.baseUrl + 'login', model)
   .pipe(map((response: any) => {
     const user = response;

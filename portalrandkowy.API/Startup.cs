@@ -42,6 +42,7 @@ namespace portalrandkowy.API
                     builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().Build();
                 });
             });
+
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options => {
@@ -69,7 +70,7 @@ namespace portalrandkowy.API
             }
 
             app.UseHttpsRedirection();
-
+      app.UseCors(options => options.WithOrigins("https://localhost:5001").AllowAnyHeader().AllowAnyMethod());
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
@@ -79,7 +80,7 @@ namespace portalrandkowy.API
             {
                 endpoints.MapControllers();
             });
-            app.UseCors(options => options.WithOrigins("http://localhost:5000/api/values").AllowAnyHeader().AllowAnyMethod());
+
 
             app.UseMvc();
         }
