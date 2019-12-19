@@ -19,6 +19,15 @@ export class NavComponent implements OnInit {
       console.log('Log ok');
     }, error => {
       console.log(error.message + 'Wystapil blad logowania')
-    })
+    });
+  }
+  loggedIn() {
+    const token = localStorage.getItem('token');
+    return !!token;
+  }
+  logOut() {
+    localStorage.removeItem('token');
+    console.log("Log out!");
   }
 }
+

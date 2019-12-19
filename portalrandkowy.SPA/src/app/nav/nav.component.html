@@ -10,8 +10,21 @@
       <li class="nav-item">
         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Messages</a>
       </li>
+      <li class="nav-item">
+        <a *ngIf="loggedIn()" class="nav-link" (click)="logOut()">Log Out</a>
+      </li>
     </ul>
-    <form #loginForm="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)="logIn()">
+    <div *ngIf="loggedIn()" class="dropdown">
+      <a class="dropdown-toggle text-light">
+        Hi User!
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#"><i class="fa fa-user"></i>Edit profile</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#"><i class="fa fa-sign-out"></i>Log Out</a>
+      </div>
+    </div>
+    <form *ngIf="!loggedIn()" #loginForm="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)="logIn()">
       <input class="form-control mr-sm-2" type="text" placeholder="User" [(ngModel)]="model.username" name="username" required #username="ngModel">
       <input class="form-control mr-sm-2" type="text" placeholder="Password" [(ngModel)]="model.password" name="password" required #password="ngModel">
       <button [disabled]="!loginForm.valid" class="btn btn-secondary my-2 my-sm-0" type="submit">Log In</button>
