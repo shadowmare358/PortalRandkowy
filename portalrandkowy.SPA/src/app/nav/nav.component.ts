@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
-
+import { AlertifyService } from '../_services/alertify.service';
+// import { alertify } from '../../../node_modules/alertifyjs/build/alertify.min.js';
+declare let alertify: any;
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
@@ -9,16 +11,16 @@ import { AuthService } from '../_services/auth.service';
 export class NavComponent implements OnInit {
   model: any = {};
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private alertify: AlertifyService) { }
 
   ngOnInit() {
   }
 
   logIn(){
     this.authService.login(this.model).subscribe(next => {
-      console.log('Log ok');
+      this.alertify.success("Login successful!")
     }, error => {
-      console.log(error.message + 'Wystapil blad logowania')
+      this.alertify.error(error.message + 'error!');
     });
   }
   loggedIn() {
@@ -27,7 +29,7 @@ export class NavComponent implements OnInit {
   }
   logOut() {
     localStorage.removeItem('token');
-    console.log("Log out!");
+    this.alertify.message("Logged out successfully!")
   }
 }
 

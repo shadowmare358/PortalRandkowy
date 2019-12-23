@@ -11,11 +11,6 @@ baseUrl = 'https://localhost:5001/api/auth/';
 
 constructor(private http: HttpClient) { }
 login(model: any){
-  // const headers = new HttpHeaders()
-  //     .append('Content-Type', 'application/json')
-  //      .append('Access-Control-Allow-Methods', 'POST')
-  //      .append('Access-Control-Allow-Methods', 'GET')
-  //     .append('Access-Control-Allow-Origin', 'https://localhost:5001/api/auth/');
   return this.http.post(this.baseUrl + 'login', model)
   .pipe(map((response: any) => {
     const user = response;
@@ -24,4 +19,9 @@ login(model: any){
     }
   }));
 }
+
+register(model: any){
+  return this.http.post(this.baseUrl + 'register', model);
+}
+
 }
