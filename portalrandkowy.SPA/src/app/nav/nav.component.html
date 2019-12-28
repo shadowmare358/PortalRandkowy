@@ -2,7 +2,7 @@
   <a class="navbar-brand" href="#">Portal Randkowy</a>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Users</a>
+        <a routerLink="/users" class="nav-link" tabindex="-1" aria-disabled="true" [class.disabled]="!loggedIn() ? true : null">Users</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Likes</a>
@@ -30,3 +30,4 @@
       <button [disabled]="!loginForm.valid" class="btn btn-secondary my-2 my-sm-0" type="submit">Log In</button>
     </form>
 </nav>
+<router-outlet>

@@ -59,5 +59,10 @@ namespace portalrandkowy.API.Controllers
 
             return Ok(new {token = tokenHandler.WriteToken(token)});
         }
+
+        [HttpGet("users")]
+        public async Task<IActionResult> GetUsers(){
+            var usersFromRepo = await _repository.
+        }
     }
 }

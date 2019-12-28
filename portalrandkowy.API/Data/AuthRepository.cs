@@ -45,6 +45,10 @@ namespace portalrandkowy.API.Data
 
            return false;
         }
+
+        public async Task<string> GetUsers(){
+            return "NULL";
+        }
     #endregion
 
     #region method private

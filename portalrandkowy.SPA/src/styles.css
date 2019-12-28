@@ -3,3 +3,10 @@
 @import '../node_modules/font-awesome/css/font-awesome.min.css';
 @import '../node_modules/alertifyjs/build/css/alertify.min.css';
 @import '../node_modules/alertifyjs/build/css/themes/bootstrap.min.css';
+
+body{
+    width:100vw;
+    height: 100vh;
+    background: linear-gradient(#871981 0%, #ff99cc 100%);
+    background-repeat: no-repeat;
+}

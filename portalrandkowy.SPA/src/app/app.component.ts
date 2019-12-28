@@ -18,5 +18,6 @@ jwtHelper = new JwtHelperService();
       this.authService.decodedToken = this.jwtHelper.decodeToken(token);
     }
   }
+  
 
 }
