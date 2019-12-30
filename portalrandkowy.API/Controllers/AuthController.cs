@@ -3,6 +3,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -61,8 +62,9 @@ namespace portalrandkowy.API.Controllers
         }
 
         [HttpGet("users")]
-        public async Task<IActionResult> GetUsers(){
-            var usersFromRepo = await _repository.
+        public async Task<List<User>> GetUsers(){
+            var usersFromRepo = await _repository.GetUsers();
+            return usersFromRepo;
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using portalrandkowy.API.Models;
 
 namespace portalrandkowy.API.Data
@@ -46,8 +47,9 @@ namespace portalrandkowy.API.Data
            return false;
         }
 
-        public async Task<string> GetUsers(){
-            return "NULL";
+        public async Task<List<User>> GetUsers(){
+            List<User> list = await _context.Users.ToListAsync();
+            return list;
         }
     #endregion
 
