@@ -12,6 +12,7 @@ import { RegisterComponent } from './register/register.component';
 import { AlertifyService } from './_services/alertify.service';
 import { UsersComponent } from './users/users.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { MessagesComponent } from './messages/messages.component';
 
 const appRoutes: Routes = [
   {
@@ -21,6 +22,10 @@ const appRoutes: Routes = [
   {
    path: 'home',
    component: HomeComponent
+ },
+ {
+   path: 'messages',
+   component: MessagesComponent
  },
  {
    path: '',
@@ -37,7 +42,8 @@ const appRoutes: Routes = [
       HomeComponent,
       RegisterComponent,
       UsersComponent,
-      NotfoundComponent
+      NotfoundComponent,
+      MessagesComponent
    ],
    imports: [
       BrowserModule,
@@ -46,9 +52,7 @@ const appRoutes: Routes = [
       RouterModule.forRoot(
          appRoutes,
          { enableTracing: true } // <-- debugging purposes only
-     )
-
-   ],
+      )],
    providers: [
       AuthService,
       AlertifyService

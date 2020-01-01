@@ -1,7 +1,9 @@
+using System.Security.Cryptography.X509Certificates;
 using System;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using portalrandkowy.API.Models;
@@ -49,6 +51,27 @@ namespace portalrandkowy.API.Data
 
         public async Task<List<User>> GetUsers(){
             List<User> list = await _context.Users.ToListAsync();
+            return list;
+        }
+
+       public async Task<Message> SendMessage(Message message){
+        var user = await _context.Users.FirstOrDefaultAsync(x => x.Username == message.AuthorUsername);
+        if(user == null)
+            return null;
+        var receiverUser = await _context.Users.FirstOrDefaultAsync(x => x.Username == message.ReceieverUsername);
+        if(receiverUser == null)
+            return null;
+            message.Id = 0;
+            message.AuthorId = user.Id;
+            message.ReceieverId = receiverUser.Id;
+            message.Like = 0;
+        await _context.Messages.AddAsync(message);
+        await _context.SaveChangesAsync();
+        return message;
+
+        }
+       public async Task<List<Message>> GetMessages(string username){
+             List<Message> list = await _context.Messages.Where(x => x.AuthorUsername == username).ToListAsync();
             return list;
         }
     #endregion

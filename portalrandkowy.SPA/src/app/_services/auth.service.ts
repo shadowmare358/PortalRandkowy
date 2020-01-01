@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import {JwtHelperService} from "@auth0/angular-jwt";
+import { Message } from 'src/models/Message';
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +26,10 @@ login(model: any){
     }
   }));
 }
-
-register(model: any){
+send(message: Message) {
+  return this.http.post(this.baseUrl + 'send', message);
+}
+register(model: any) {
   return this.http.post(this.baseUrl + 'register', model);
 }
 

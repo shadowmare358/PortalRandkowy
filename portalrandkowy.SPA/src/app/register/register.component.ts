@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { AlertifyService } from '../_services/alertify.service';
-// import { alertify } from '../../../node_modules/alertifyjs';
+import { alertify } from '../../../node_modules/alertifyjs';
 declare let alertify: any;
 
 @Component({

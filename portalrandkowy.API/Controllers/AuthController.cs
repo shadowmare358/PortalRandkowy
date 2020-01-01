@@ -66,5 +66,16 @@ namespace portalrandkowy.API.Controllers
             var usersFromRepo = await _repository.GetUsers();
             return usersFromRepo;
         }
+        [HttpPost("send")]
+        public async Task<IActionResult> Send(Message messageForSendDto){
+            var message = await _repository.SendMessage(messageForSendDto);
+            return StatusCode(201);
+
+        }
+    //    [HttpGet("messages")]
+    //     public async Task<List<Message>> SendMessage(){
+
+    //     }
+
     }
 }

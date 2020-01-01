@@ -1,0 +1,17 @@
+<div *ngIf="loggedIn()">
+  <div class="form-group">
+    <h2 class = "text-center text-info">Type your message</h2>
+    <label for="formGroupExampleInput">Select receiever</label>
+    <select name="select"  [(ngModel)]="message.receieverusername" class="form-control">
+      <option *ngFor="let user of users">{{user.username}}
+      </option>
+      </select>
+  </div>
+<div class="form-group">
+  <label for="formGroupExampleInput">Type something</label>
+  <textarea class="form-control" id="content" rows="3" columns='1' placeholder="..." name="content" [(ngModel)]="message.content"></textarea>
+</div>
+<div class="text-center">
+  <button class="btn btn-success" type="button" (click)="send()">Send</button>
+</div>
+</div>

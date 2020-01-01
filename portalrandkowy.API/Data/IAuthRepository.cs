@@ -10,5 +10,7 @@ namespace portalrandkowy.API.Data
          Task<User> Register(User user, string password);
          Task<bool> UserExists(string username);
          Task<List<User>> GetUsers();
+        //  Task<List<Message>> GetMessages();
+         Task<Message> SendMessage(Message message);
     }
 }
