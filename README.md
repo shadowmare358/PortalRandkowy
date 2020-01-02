@@ -6,5 +6,5 @@ NET Core Server side, EF, DI, Angular Front End Models, Services, Components
 
 ![alt text](https://i.imgur.com/QKm65uY.jpg)
 
-![alt text](https://i.imgur.com/vvZWdyJ.png)
+![alt text](https://i.imgur.com/vvZWdyJ.png?2)
 
